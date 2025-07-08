@@ -93,7 +93,7 @@ class SelcukCropExampleExecutorOutputs(Outputs):
     outputImage: OutputImage
 
 class SelcukCropExampleExecutorRequest(Request):
-    inputs: Optional[PackageInputs]
+    inputs: Optional[SelcukCropExampleExecutorInputs]
     configs: PackageConfigs
 
     class Config:
