@@ -81,7 +81,7 @@ class Degree(Config):
 
 
 class SelcukCropExampleExecutorInputs(Inputs):
-    inputImage: inputImage
+    inputImage: InputImage
 
 
 class SelcukCropExampleConfigs(Configs):
