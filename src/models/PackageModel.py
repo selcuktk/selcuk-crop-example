@@ -94,7 +94,7 @@ class SelcukCropExampleExecutorOutputs(Outputs):
 
 class SelcukCropExampleExecutorRequest(Request):
     inputs: Optional[SelcukCropExampleExecutorInputs]
-    configs: PackageConfigs
+    configs: SelcukCropExampleExecutorConfigs
 
     class Config:
         json_schema_extra = {
