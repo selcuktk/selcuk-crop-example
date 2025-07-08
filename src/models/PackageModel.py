@@ -79,14 +79,6 @@ class Degree(Config):
     class Config:
         title = "AAAngle"
 
-class SelcukCropExampleExecutorRequest(Request):
-    inputs: Optional[PackageInputs]
-    configs: PackageConfigs
-
-    class Config:
-        json_schema_extra = {
-            "target": "configs"
-        }
 
 class SelcukCropExampleExecutorInputs(Inputs):
     inputImage: inputImage
@@ -99,6 +91,15 @@ class SelcukCropExampleConfigs(Configs):
 
 class SelcukCropExampleExecutorOutputs(Outputs):
     outputImage: OutputImage
+
+class SelcukCropExampleExecutorRequest(Request):
+    inputs: Optional[PackageInputs]
+    configs: PackageConfigs
+
+    class Config:
+        json_schema_extra = {
+            "target": "configs"
+        }
 
 class SelcukCropExampleExecutorResponse(Response):
     outputs: SelcukCropExampleExecutorOutputs
