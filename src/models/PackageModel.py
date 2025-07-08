@@ -1,4 +1,3 @@
-
 from pydantic import Field, validator
 from typing import List, Optional, Union, Literal
 from sdks.novavision.src.base.model import Package, Image, Inputs, Configs, Outputs, Response, Request, Output, Input, Config
@@ -20,7 +19,6 @@ class InputImage(Input):
     class Config:
         title = "Image"
 
-
 class OutputImage(Output):
     name: Literal["outputImage"] = "outputImage"
     value: Union[List[Image],Image]
@@ -36,7 +34,6 @@ class OutputImage(Output):
 
     class Config:
         title = "Image"
-
 
 class KeepSideFalse(Config):
     name: Literal["False"] = "False"
@@ -56,7 +53,6 @@ class KeepSideTrue(Config):
 
     class Config:
         title = "Enable"
-
 
 class KeepSideBBox(Config):
     """
@@ -79,26 +75,11 @@ class Degree(Config):
     value: int = Field(ge=-359.0, le=359.0,default=0)
     type: Literal["number"] = "number"
     field: Literal["textInput"] = "textInput"
-    placeHolder: Literal["[-359, 359]"] = "[-359, 359]"
 
     class Config:
-        title = "Angle"
+        title = "AAAngle"
 
-
-class PackageInputs(Inputs):
-    inputImage: InputImage
-
-
-class PackageConfigs(Configs):
-    degree: Degree
-    drawBBox: KeepSideBBox
-
-
-class PackageOutputs(Outputs):
-    outputImage: OutputImage
-
-
-class PackageRequest(Request):
+class SelcukCropExampleExecutorRequest(Request):
     inputs: Optional[PackageInputs]
     configs: PackageConfigs
 
@@ -107,14 +88,24 @@ class PackageRequest(Request):
             "target": "configs"
         }
 
+class SelcukCropExampleExecutorInputs(Inputs):
+    inputImage: inputImage
 
-class PackageResponse(Response):
-    outputs: PackageOutputs
+
+class SelcukCropExampleConfigs(Configs):
+    degree: Degree
+    drawBBox: KeepSideBBox
 
 
-class PackageExecutor(Config):
-    name: Literal["Package"] = "Package"
-    value: Union[PackageRequest, PackageResponse]
+class SelcukCropExampleExecutorOutputs(Outputs):
+    outputImage: OutputImage
+
+class SelcukCropExampleExecutorResponse(Response):
+    outputs: SelcukCropExampleExecutorOutputs
+
+class SelcukCropExampleExecutor(Config):
+    name: Literal["SelcukCropExampleExecutor"] = "SelcukCropExampleExecutor"
+    value: Union[SelcukCropExampleExecutorRequest, SelcukCropExampleExecutorResponse]
     type: Literal["object"] = "object"
     field: Literal["option"] = "option"
 
